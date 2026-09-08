@@ -54,3 +54,11 @@ venv.bak/
 dmypy.json
 .pyre/
 .pytype/
+
+# pycache
+app/__pycache__
+app/__pycache__/*
+alembic/__pycache__
+alembic/__pycache__/*
+app/*/__pycache__
+app/*/__pycache__/*
