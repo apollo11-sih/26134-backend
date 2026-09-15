@@ -4,10 +4,10 @@ import os
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from dotenv import load_dotenv
-from sqlmodel import SQLModel
 
 from alembic import context
-from app.database import models
+from app.database.base import Base
+import app.models  # registers all models into Base.metadata
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -19,18 +19,18 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 load_dotenv()
-database_url =  os.getenv("DATABASE_URL", "").strip()
+database_url = os.getenv("DATABASE_URL", "").strip()
 if not database_url:
     raise RuntimeError(
         "DATABASE_URL is empty. Set it in backend/.env before running Alembic commands."
     )
+if database_url.startswith("postgresql://"):
+    database_url = database_url.replace("postgresql://", "postgresql+psycopg://", 1)
 config.set_main_option("sqlalchemy.url", database_url)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-target_metadata = SQLModel.metadata
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
