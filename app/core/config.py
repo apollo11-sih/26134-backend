@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
 
     # Database
-    DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/kaushallens"
+    DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/skillsync"
 
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"

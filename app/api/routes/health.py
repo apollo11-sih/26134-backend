@@ -9,5 +9,6 @@ def health() -> HealthResponse:
     return HealthResponse(
         status="ok",
         message="Backend service is healthy",
-        version="0.0.1"
+        version="0.0.1",
+        developer="vedant"
         )
