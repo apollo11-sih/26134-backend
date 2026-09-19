@@ -13,10 +13,19 @@ class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    email: Mapped[str] = mapped_column(String(120), unique=True, index=True)
+    name: Mapped[str] = mapped_column(String(120))
+    phone_no:Mapped[str] = mapped_column(String(20))
+    email: Mapped[str] = mapped_column(
+        String(120), 
+        unique=True, 
+        index=True
+    )
+    role: Mapped[str] = mapped_column(String(20),default="user")
     password: Mapped[str] = mapped_column(String(255))
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), 
+        server_default=func.now()
+    )
     refresh_tokens: Mapped[list[RefreshToken]] = relationship(
         back_populates="user"
     )
