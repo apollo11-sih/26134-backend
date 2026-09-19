@@ -5,7 +5,7 @@ PHASE 2
 District Selection
         ↓
 PHASE 3
-Jobs + Companies
+Jobs + Companies ✅
         ↓
 PHASE 4
 Skill Extraction + Normalization
